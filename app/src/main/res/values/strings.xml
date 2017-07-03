@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">EmployeeTracking</string>
+    <string name="dashboard">Dashboard</string>
+    <string name="schedule">Schedule</string>
+    <string name="time">Time Sheets</string>
+    <string name="request">Requests</string>
+
+    <string name="open">open</string>
+    <string name="close">close</string>
 </resources>
