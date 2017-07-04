@@ -14,8 +14,6 @@ import com.tracking.employeetracking.R;
 
 public class OpenShifts extends Fragment {
 
-
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.frag_open_shifts, container, false);
