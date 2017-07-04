@@ -9,6 +9,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
+import com.tracking.employeetracking.fragments.schedule.MyShiftsFragmentHost;
+
 public class HomePage extends AppCompatActivity {
     private ActionBarDrawerToggle toggle;
     private Toolbar toolbar;
@@ -26,13 +28,13 @@ public class HomePage extends AppCompatActivity {
 
         setListener();
 
-//        if (findViewById(R.id.home_container)!=null) {
-//            if (savedInstanceState != null)
-//                return;
-//
-//            MyShiftsFragmentHost host=new MyShiftsFragmentHost();
-//            getSupportFragmentManager().beginTransaction().add(R.id.home_container, host).addToBackStack(null).commit();
-//        }
+        if (findViewById(R.id.home_container)!=null) {
+            if (savedInstanceState != null)
+                return;
+
+            MyShiftsFragmentHost host=new MyShiftsFragmentHost();
+            getSupportFragmentManager().beginTransaction().add(R.id.home_container, host).addToBackStack(null).commit();
+        }
 
     }
     private void initViews()
