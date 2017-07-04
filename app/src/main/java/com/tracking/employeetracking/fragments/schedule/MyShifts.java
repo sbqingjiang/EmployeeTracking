@@ -70,15 +70,17 @@ public class MyShifts extends Fragment {
                 progressDialog.dismiss();
                 try {
                     if (!response.contains("msg")) {
+
                         JSONArray jsonArray = new JSONArray(response);
 
                         for (int i = 0; i < jsonArray.length(); i++) {
+
                             JSONObject infoObj = jsonArray.getJSONObject(i);
                             MyShiftsInfo info = new MyShiftsInfo(infoObj.getString("ShiftID"), infoObj.getString("ShiftStartTime"),
                                     infoObj.getString("ShiftEndTime"), infoObj.getString("ShiftDate"), infoObj.getString("ShiftLocation"));
                             listData.add(info);
-
                         }
+
                         MyShiftsAdapter adapter = new MyShiftsAdapter(listData, getContext());
                         mRecyclerView.setAdapter(adapter);
                         mRecyclerView.setItemAnimator(new DefaultItemAnimator());

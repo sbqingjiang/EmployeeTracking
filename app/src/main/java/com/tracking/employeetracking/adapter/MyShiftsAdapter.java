@@ -11,7 +11,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.tracking.employeetracking.R;
-import com.tracking.employeetracking.fragments.schedule.MyShifts;
 import com.tracking.employeetracking.model.MyShiftsInfo;
 
 import java.util.ArrayList;

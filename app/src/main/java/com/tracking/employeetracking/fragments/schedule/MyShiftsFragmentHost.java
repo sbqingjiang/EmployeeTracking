@@ -31,7 +31,6 @@ public class MyShiftsFragmentHost extends Fragment{
 
 
 
-
         return mTabhost;
     }
 
