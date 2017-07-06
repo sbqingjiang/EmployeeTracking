@@ -1,5 +1,6 @@
 package com.tracking.employeetracking.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -71,11 +72,13 @@ public class HomePage extends AppCompatActivity {
                     case R.id.dashboard:
                         getSupportFragmentManager().beginTransaction().replace(R.id.home_container, new Map()).addToBackStack(null).commit();
                         break;
-                    case R.id.request:
+                    case R.id.logout:
+                        Intent it=new Intent(HomePage.this,LoginPage.class);
+                        startActivity(it);
                         break;
-//                    case R.id.item_4:
-//                        finish();
-//                        break;
+                    case R.id.profile:
+
+                        break;
                 }
                 mDrawerLayout.closeDrawer(GravityCompat.START);
                 return true;

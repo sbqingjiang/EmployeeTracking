@@ -8,12 +8,12 @@
     <ImageView
         android:layout_width="72dp"
         android:layout_height="72dp"
-        android:src="@drawable/user"/>
+        android:src="@drawable/doctor"/>
     <TextView
         android:layout_marginTop="16dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="18dp"
         android:textColor="#FFF"
-        android:text="TEST"/>
+        android:text="Qingjiangyin"/>
 </LinearLayout>

@@ -10,8 +10,11 @@
             android:title="@string/schedule"
             android:icon="@drawable/check" />
 
-        <item android:id="@+id/request"
-            android:title="@string/request"
-            android:icon="@drawable/highimportance"/>
+        <item android:id="@+id/profile"
+            android:title="Progile"
+            android:icon="@drawable/user"/>
+        <item android:id="@+id/logout"
+            android:title="Logout"
+            android:icon="@drawable/left"/>
     </group>
 </menu>
