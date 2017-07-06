@@ -10,7 +10,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
 import com.tracking.employeetracking.R;
-import com.tracking.employeetracking.fragments.Map;
+import com.tracking.employeetracking.fragments.map.Map;
 import com.tracking.employeetracking.fragments.schedule.MyShiftsFragmentHost;
 
 public class HomePage extends AppCompatActivity {

@@ -1,4 +1,4 @@
-package com.tracking.employeetracking.fragments;
+package com.tracking.employeetracking.fragments.map;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -6,6 +6,8 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -31,6 +33,13 @@ public class Map extends Fragment implements OnMapReadyCallback {
       SupportMapFragment mapFragment = (SupportMapFragment) getChildFragmentManager()
                 .findFragmentById(my_map);
         mapFragment.getMapAsync(this);
+        LinearLayout liear=(LinearLayout) view.findViewById(R.id.linearLayout);
+        liear.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(getContext(),"text",Toast.LENGTH_LONG).show();
+            }
+        });
         return view;
     }
 

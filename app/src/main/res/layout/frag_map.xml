@@ -16,6 +16,7 @@
             android:layout_height="250dp"
             class="com.google.android.gms.maps.SupportMapFragment"/>
         <LinearLayout
+            android:id="@+id/linearLayout"
             android:background="@color/colorPrimary"
             android:orientation="horizontal"
             android:layout_width="match_parent"
