@@ -1,4 +1,4 @@
-package com.tracking.employeetracking;
+package com.tracking.employeetracking.activity;
 
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
@@ -9,6 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
+import com.tracking.employeetracking.R;
 import com.tracking.employeetracking.fragments.schedule.MyShiftsFragmentHost;
 
 public class HomePage extends AppCompatActivity {
@@ -28,14 +29,11 @@ public class HomePage extends AppCompatActivity {
 
         setListener();
 
-        if (findViewById(R.id.home_container)!=null) {
-            if (savedInstanceState != null)
-                return;
-
-            MyShiftsFragmentHost host=new MyShiftsFragmentHost();
-            getSupportFragmentManager().beginTransaction().add(R.id.home_container, host).addToBackStack(null).commit();
+        if (findViewById(R.id.home_container) != null) {
+            if (savedInstanceState == null) {
+                jumpToSchedule();
+            }
         }
-
     }
     private void initViews()
     {
@@ -63,6 +61,7 @@ public class HomePage extends AppCompatActivity {
             public boolean onNavigationItemSelected(MenuItem item) {
                 switch (item.getItemId()) {
                     case R.id.schedule:
+                        jumpToSchedule();
                         break;
                     case R.id.dashboard:
                         break;
@@ -78,5 +77,9 @@ public class HomePage extends AppCompatActivity {
         });
     }
 
+    public void jumpToSchedule() {
+        MyShiftsFragmentHost shiftHost = new MyShiftsFragmentHost();
+        getSupportFragmentManager().beginTransaction().add(R.id.home_container, shiftHost).commit();
+    }
 
 }
