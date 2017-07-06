@@ -1,10 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent">
-
-    <fragment
-        android:id="@+id/map"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        class="com.google.android.gms.maps.MapFragment"/>
+        android:paddingTop="5dp"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:layout_marginEnd="5dp"
+        android:layout_height="wrap_content">
+        <fragment
+            android:id="@+id/my_map"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            class="com.google.android.gms.maps.SupportMapFragment"/>
+        <LinearLayout
+            android:background="@color/colorPrimary"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="40dp">
+            <ImageView
+                android:layout_gravity="center_vertical"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/clock"/>
+            <TextView
+                android:id="@+id/clockin"
+                android:paddingLeft="5dp"
+                android:gravity="center_vertical"
+                android:text="Clock In"
+                android:background="@color/colorPrimary"
+                android:textColor="@color/primaryText"
+                android:layout_width="70dp"
+                android:layout_height="40dp"
+                />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@color/colorAccent"
+            android:layout_marginBottom="5dp"/>
+        <LinearLayout
+            android:background="@color/colorAccent"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"/>
+
+    </LinearLayout>
+
+
 </FrameLayout>

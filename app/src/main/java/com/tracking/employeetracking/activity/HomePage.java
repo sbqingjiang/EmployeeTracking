@@ -11,6 +11,7 @@ import android.view.MenuItem;
 
 import com.tracking.employeetracking.R;
 import com.tracking.employeetracking.fragments.Map;
+import com.tracking.employeetracking.fragments.schedule.MyShiftsFragmentHost;
 
 public class HomePage extends AppCompatActivity {
     private ActionBarDrawerToggle toggle;
@@ -34,8 +35,8 @@ public class HomePage extends AppCompatActivity {
                 return;
 
             //MyShiftsFragmentHost host=new MyShiftsFragmentHost();
-            Map map=new Map();
-            getSupportFragmentManager().beginTransaction().add(R.id.home_container, map).addToBackStack(null).commit();
+
+            getSupportFragmentManager().beginTransaction().add(R.id.home_container, new Map()).addToBackStack(null).commit();
         }
 
     }
@@ -65,8 +66,10 @@ public class HomePage extends AppCompatActivity {
             public boolean onNavigationItemSelected(MenuItem item) {
                 switch (item.getItemId()) {
                     case R.id.schedule:
+                        getSupportFragmentManager().beginTransaction().replace(R.id.home_container,new MyShiftsFragmentHost()).addToBackStack(null).commit();
                         break;
                     case R.id.dashboard:
+                        getSupportFragmentManager().beginTransaction().replace(R.id.home_container, new Map()).addToBackStack(null).commit();
                         break;
                     case R.id.request:
                         break;
