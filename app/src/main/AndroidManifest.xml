@@ -24,6 +24,12 @@
         <activity android:name=".activity.LoginPage" />
         <activity android:name=".activity.HomePage" />
 
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyA4oYh57HSKRsPCGo1QvOqW2wOiVFh5g70" />
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
     </application>
 
 </manifest>

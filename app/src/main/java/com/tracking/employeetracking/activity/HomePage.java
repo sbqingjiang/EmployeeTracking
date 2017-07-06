@@ -10,14 +10,13 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
 import com.tracking.employeetracking.R;
-import com.tracking.employeetracking.fragments.schedule.MyShiftsFragmentHost;
+import com.tracking.employeetracking.fragments.Map;
 
 public class HomePage extends AppCompatActivity {
     private ActionBarDrawerToggle toggle;
     private Toolbar toolbar;
     private NavigationView mNavigationView;
     private DrawerLayout mDrawerLayout;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,24 +29,26 @@ public class HomePage extends AppCompatActivity {
 
         setListener();
 
-        if (findViewById(R.id.home_container) != null) {
-            if (savedInstanceState == null) {
-                jumpToSchedule();
-            }
-        }
-    }
+        if (findViewById(R.id.home_container)!=null) {
+            if (savedInstanceState != null)
+                return;
 
-    private void initViews() {
+            //MyShiftsFragmentHost host=new MyShiftsFragmentHost();
+            Map map=new Map();
+            getSupportFragmentManager().beginTransaction().add(R.id.home_container, map).addToBackStack(null).commit();
+        }
+
+    }
+    private void initViews()
+    {
         toolbar= (Toolbar) findViewById(R.id.toolbar);
         mNavigationView= (NavigationView) findViewById(R.id.nav_view);
         mDrawerLayout= (DrawerLayout) findViewById(R.id.drawer_layout);
     }
-
     private void setActionBar() {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
-
     private void hideScrollBar() {
         mNavigationView.getChildAt(0).setVerticalScrollBarEnabled(false);
     }
@@ -58,14 +59,12 @@ public class HomePage extends AppCompatActivity {
         /*同步drawerlayout的状态*/
         toggle.syncState();
     }
-
     private void setListener() {
         mNavigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(MenuItem item) {
                 switch (item.getItemId()) {
                     case R.id.schedule:
-                        jumpToSchedule();
                         break;
                     case R.id.dashboard:
                         break;
@@ -81,9 +80,5 @@ public class HomePage extends AppCompatActivity {
         });
     }
 
-    public void jumpToSchedule() {
-        MyShiftsFragmentHost shiftHost = new MyShiftsFragmentHost();
-        getSupportFragmentManager().beginTransaction().add(R.id.home_container, shiftHost).commit();
-    }
 
 }
