@@ -48,7 +48,7 @@ public class SignUp extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        root = (ViewGroup) inflater.inflate(R.layout.signup, container, false);
+        root = (ViewGroup) inflater.inflate(R.layout.frag_signup, container, false);
 
         cc = (Controller) getContext().getApplicationContext();
         signupButton = (FButton) root.findViewById(R.id.signupBtn);

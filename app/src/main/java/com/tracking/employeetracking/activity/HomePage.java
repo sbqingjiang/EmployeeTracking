@@ -12,6 +12,7 @@ import android.view.MenuItem;
 
 import com.tracking.employeetracking.R;
 import com.tracking.employeetracking.fragments.map.Map;
+import com.tracking.employeetracking.fragments.profile.UserProfile;
 import com.tracking.employeetracking.fragments.schedule.MyShiftsFragmentHost;
 
 public class HomePage extends AppCompatActivity {
@@ -19,6 +20,7 @@ public class HomePage extends AppCompatActivity {
     private Toolbar toolbar;
     private NavigationView mNavigationView;
     private DrawerLayout mDrawerLayout;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,25 +34,23 @@ public class HomePage extends AppCompatActivity {
         setListener();
 
         if (findViewById(R.id.home_container)!=null) {
-            if (savedInstanceState != null)
-                return;
-
-            //MyShiftsFragmentHost host=new MyShiftsFragmentHost();
-
-            getSupportFragmentManager().beginTransaction().add(R.id.home_container, new Map()).addToBackStack(null).commit();
+            if (savedInstanceState == null) {
+                getSupportFragmentManager().beginTransaction().add(R.id.home_container, new Map()).addToBackStack(null).commit();
+            }
         }
-
     }
-    private void initViews()
-    {
+
+    private void initViews() {
         toolbar= (Toolbar) findViewById(R.id.toolbar);
         mNavigationView= (NavigationView) findViewById(R.id.nav_view);
         mDrawerLayout= (DrawerLayout) findViewById(R.id.drawer_layout);
     }
+
     private void setActionBar() {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
+
     private void hideScrollBar() {
         mNavigationView.getChildAt(0).setVerticalScrollBarEnabled(false);
     }
@@ -61,6 +61,7 @@ public class HomePage extends AppCompatActivity {
         /*同步drawerlayout的状态*/
         toggle.syncState();
     }
+
     private void setListener() {
         mNavigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -77,7 +78,7 @@ public class HomePage extends AppCompatActivity {
                         startActivity(it);
                         break;
                     case R.id.profile:
-
+                        getSupportFragmentManager().beginTransaction().replace(R.id.home_container,new UserProfile()).addToBackStack(null).commit();
                         break;
                 }
                 mDrawerLayout.closeDrawer(GravityCompat.START);

@@ -8,4 +8,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="schedule" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/frag_schedule_recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    </android.support.v7.widget.RecyclerView>
+
+
 </LinearLayout>
