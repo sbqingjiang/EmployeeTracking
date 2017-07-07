@@ -11,9 +11,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -26,7 +23,6 @@ import com.tracking.employeetracking.Controller;
 import com.tracking.employeetracking.R;
 import com.tracking.employeetracking.activity.HomePage;
 
-import at.markushi.ui.CircleButton;
 import info.hoang8f.widget.FButton;
 
 
@@ -47,7 +43,7 @@ public class SignIn extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        root = (ViewGroup) inflater.inflate(R.layout.signin, container, false);
+        root = (ViewGroup) inflater.inflate(R.layout.frag_signin, container, false);
 
         cc = (Controller) getContext().getApplicationContext();
         fm = getFragmentManager();

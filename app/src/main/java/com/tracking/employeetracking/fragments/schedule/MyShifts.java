@@ -47,7 +47,7 @@ public class MyShifts extends Fragment {
         View view = inflater.inflate(R.layout.frag_my_shifts, container, false);
 
         cc = (Controller) getContext().getApplicationContext();
-        sb = new StringBuilder("http://rjtmobile.com/aamir/emp-mgt-sys/apps/shift_info.php?mobile=");
+        sb = new StringBuilder("http://rjtmobile.com/aamir/emp-mgt-sys/apps/my_shift_info.php?mobile=");
         //TODO: update mobile to aamir for more info
         //sb.append(cc.getUserMobile());
         sb.append("55565454");
@@ -78,15 +78,16 @@ public class MyShifts extends Fragment {
                 try {
                     if (!response.contains("msg")) {
 
-                        JSONArray jsonArray = new JSONArray(response);
-// TODO: get location/city from map/controller
-                        //for (int i = 0; i < jsonArray.length(); i++) {
+                        JSONObject jsonObject = new JSONObject(response);
+                        JSONArray jsonArray = jsonObject.getJSONArray("My Shift Information");
 
-                            JSONObject infoObj = jsonArray.getJSONObject(0);
+                        for (int i = 0; i < jsonArray.length(); i++) {
+
+                            JSONObject infoObj = jsonArray.getJSONObject(i);
                             MyShiftsInfo info = new MyShiftsInfo(infoObj.getString("ShiftID"), infoObj.getString("ShiftStartTime"),
-                                    infoObj.getString("ShiftEndTime"), infoObj.getString("ShiftDate"), infoObj.getString("ShiftLocationZip"));
+                                    infoObj.getString("ShiftEndTime"), infoObj.getString("ShiftDate"), infoObj.getString("ShiftLocation"));
                             listData.add(info);
-                        //}
+                        }
 
                         MyShiftsAdapter adapter = new MyShiftsAdapter(listData, getContext());
                         mRecyclerView.setAdapter(adapter);
@@ -102,6 +103,7 @@ public class MyShifts extends Fragment {
                 error.printStackTrace();
             }
         });
+
         RequestQueue requestQueue = Volley.newRequestQueue(getActivity().getApplicationContext());
         requestQueue.add(sr);
     }

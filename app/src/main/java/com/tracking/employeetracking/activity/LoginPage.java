@@ -27,7 +27,7 @@ public class LoginPage extends FragmentActivity {
 
                 getSupportFragmentManager().beginTransaction()
                         .add(R.id.login_container, signin).commit();
-//                    .add(R.id.fragment, signin, "SIGN_IN").addToBackStack(null).commit();
+//                    .add(R.id.fragment, frag_signin, "SIGN_IN").addToBackStack(null).commit();
             }
         }
 
