@@ -14,7 +14,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <activity android:name=".activity.SplashPage">
+        <activity android:name=".activity.HomePage">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -23,7 +23,7 @@
         </activity>
 
         <activity android:name=".activity.LoginPage" />
-        <activity android:name=".activity.HomePage" />
+        <activity android:name=".activity.SplashPage" />
 
         <!--meta-data
             android:name="com.google.android.geo.API_KEY"
