@@ -9,7 +9,9 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.widget.TextView;
 
+import com.tracking.employeetracking.Controller;
 import com.tracking.employeetracking.R;
 import com.tracking.employeetracking.fragments.map.Map;
 import com.tracking.employeetracking.fragments.profile.UserProfile;
@@ -20,11 +22,16 @@ public class HomePage extends AppCompatActivity {
     private Toolbar toolbar;
     private NavigationView mNavigationView;
     private DrawerLayout mDrawerLayout;
+   // private TextView headerUserName;
+  //  Controller cc;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_page);
+
+       // cc = (Controller) getApplicationContext();
+        //headerUserName = (TextView) findViewById(R.id.header_username);
 
         initViews();
         hideScrollBar();
@@ -38,6 +45,8 @@ public class HomePage extends AppCompatActivity {
                 getSupportFragmentManager().beginTransaction().add(R.id.home_container, new Map()).addToBackStack(null).commit();
             }
         }
+
+       // headerUserName.setText(cc.getUserName());
     }
 
     private void initViews() {

@@ -48,9 +48,6 @@ public class Schedule extends Fragment {
 
         cc = (Controller) getContext().getApplicationContext();
         sb = new StringBuilder("http://rjtmobile.com/aamir/emp-mgt-sys/apps/schedule.php?dateRange=July%2015-21");
-        //TODO: update mobile to aamir for more info
-        //sb.append(cc.getUserMobile());
-        //sb.append("55565454");
 
         mRecyclerView = (RecyclerView) view.findViewById(R.id.frag_schedule_recyclerView);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
@@ -107,10 +104,6 @@ public class Schedule extends Fragment {
         RequestQueue requestQueue = Volley.newRequestQueue(getActivity().getApplicationContext());
         requestQueue.add(sr);
     }
-
-
-
-
 }
 
 
