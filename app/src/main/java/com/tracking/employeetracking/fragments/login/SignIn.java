@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -37,9 +38,10 @@ public class SignIn extends Fragment {
     Controller cc;
     SharedPreferences sp;
 
-    FButton signinBtn, tryRegisterBtn;
-    String nameU, mobileU, emailU, otp;
+    FButton signinBtn;
+    String mobileU, otp;
     StringBuilder sb;
+    TextView otpshow;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -52,10 +54,10 @@ public class SignIn extends Fragment {
         otp = sp.getString("OTP", "");
         sb.append(otp);
 
+        otpshow = (TextView) root.findViewById(R.id.opt_show);
         signinBtn = (FButton) root.findViewById(R.id.signinBtn);
-        tryRegisterBtn = (FButton) root.findViewById(R.id.tryRegister);
 
-        signinBtn.setText("Sign in as " + sp.getString("UserName", ""));
+        signinBtn.setText("Sign in");
         signinBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -64,31 +66,16 @@ public class SignIn extends Fragment {
             }
         });
 
-
-        tryRegisterBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                SignUp signup = new SignUp();
-                ft = fm.beginTransaction();
-                ft.replace(R.id.login_container, signup).addToBackStack(null);
-                ft.commit();
-            }
-        });
-
+        otpshow.setText("Your OTP generated: " + otp);
         return root;
     }
 
 
     public void fetchFromLocal() {
 
-        nameU = sp.getString("UserName", "");
-        emailU = sp.getString("UserEmail", "");
         mobileU = sp.getString("UserMobile", "");
 
-        cc.setUserName(nameU);
         cc.setUserMobile(mobileU);
-        cc.setUserEmail(emailU);
         cc.setOtp(otp);
     }
 

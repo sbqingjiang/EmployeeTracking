@@ -82,16 +82,16 @@
         android:layout_width="200dp"/>
 
     <info.hoang8f.widget.FButton
+        android:id="@+id/profile_log_out"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/profile_log_out"
+        android:layout_gravity="end"
+        android:layout_margin="10dp"
         android:background="@color/colorPrimaryLight"
+        android:text="Save"
         app:buttonColor="@color/colorPrimary"
         app:cornerRadius="10dp"
-        app:shadowEnabled="true"
-        android:layout_margin="10dp"
-        android:layout_gravity="end"
-        android:text="Log Out"/>
+        app:shadowEnabled="true" />
 
 
 </LinearLayout>

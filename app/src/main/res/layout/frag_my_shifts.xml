@@ -12,4 +12,14 @@
 
     </android.support.v7.widget.RecyclerView>
 
+    <TextView
+        android:id="@+id/totalHours"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="bottom"
+        android:text="Your Total Work Hour: 16 Hours"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
 </LinearLayout>

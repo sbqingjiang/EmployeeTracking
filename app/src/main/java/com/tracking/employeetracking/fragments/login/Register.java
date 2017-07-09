@@ -28,15 +28,15 @@ import org.json.JSONObject;
 import info.hoang8f.widget.FButton;
 
 /**
- * Created by Eve on 6/16/17.
+ * Created by Eve on 7/7/17.
  */
 
-public class SignUp extends Fragment {
+public class Register extends Fragment {
 
     ViewGroup root;
-    FButton signupButton;
-    EditText mobile, name, email;
-    String nameU, emailU, mobileU, otp;
+    FButton registerButton;
+    EditText mobile;
+    String mobileU, otp;
 
     FragmentManager fm;
     FragmentTransaction ft;
@@ -48,20 +48,19 @@ public class SignUp extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        root = (ViewGroup) inflater.inflate(R.layout.frag_signup, container, false);
+        root = (ViewGroup) inflater.inflate(R.layout.frag_register, container, false);
 
         cc = (Controller) getContext().getApplicationContext();
-        signupButton = (FButton) root.findViewById(R.id.signupBtn);
-        name = (EditText) root.findViewById(R.id.nameInput);
+        registerButton = (FButton) root.findViewById(R.id.registerBtn);
         mobile = (EditText) root.findViewById(R.id.mblInput);
-        email = (EditText) root.findViewById(R.id.emailInput);
 
         fm = getFragmentManager();
         sp = getContext().getSharedPreferences("mSharedPref", Context.MODE_PRIVATE);
         editor = sp.edit();
+        editor.clear();
 
 
-        signupButton.setOnClickListener(new View.OnClickListener() {
+        registerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 validation();
@@ -74,12 +73,9 @@ public class SignUp extends Fragment {
 
     public void validation() {
 
-        nameU = name.getText().toString().trim();
-        emailU = email.getText().toString().trim();
         mobileU = mobile.getText().toString().trim();
-
-        if (mobileU.length() == 0 || emailU.length() == 0 || mobileU.length() == 0) {
-            Toast.makeText(getActivity(), "All fields are required!", Toast.LENGTH_LONG).show();
+        if (mobileU.length() == 0) {
+            Toast.makeText(getActivity(), "Please input your phone!", Toast.LENGTH_LONG).show();
         } else {
 
             registerUser();
@@ -99,6 +95,7 @@ public class SignUp extends Fragment {
                         JSONArray jsonArray = new JSONArray(response);
                         JSONObject otpObj = jsonArray.getJSONObject(0);
                         otp = otpObj.getString("OTP");
+                        //Toast.makeText(getContext(), otp, Toast.LENGTH_LONG).show();
 
                         saveToLocal();
 
@@ -128,9 +125,6 @@ public class SignUp extends Fragment {
 
     public void saveToLocal() {
 
-        editor.clear();
-        editor.putString("UserName", nameU);
-        editor.putString("UserEmail", emailU);
         editor.putString("UserMobile", mobileU);
         editor.putString("OTP", otp);
 

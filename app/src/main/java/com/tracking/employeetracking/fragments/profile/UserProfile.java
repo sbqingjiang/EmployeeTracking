@@ -1,6 +1,7 @@
 package com.tracking.employeetracking.fragments.profile;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -24,6 +25,7 @@ public class UserProfile extends Fragment {
     TextView name, phone, email;
     FButton logout;
     Controller cc;
+    SharedPreferences sp;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -44,6 +46,7 @@ public class UserProfile extends Fragment {
             public void onClick(View view) {
                 Intent i = new Intent(getActivity(), LoginPage.class);
                 Toast.makeText(getActivity(), "You Are Logged Out!", Toast.LENGTH_LONG).show();
+
                 startActivity(i);
             }
         });

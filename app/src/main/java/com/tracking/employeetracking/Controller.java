@@ -14,9 +14,9 @@ public class Controller extends Application {
     private static Controller mInstance;
 
 
-    public String userName;
+    public String userName = "Yu";
     public String userMobile;
-    public String userEmail;
+    public String userEmail = "Yu@gmail.com";
     public String otp;
 
 
