@@ -7,6 +7,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -22,7 +23,8 @@ import info.hoang8f.widget.FButton;
 
 public class UserProfile extends Fragment {
 
-    TextView name, phone, email;
+    TextView phone;
+    EditText name, email;
     FButton logout;
     Controller cc;
     SharedPreferences sp;
@@ -33,21 +35,25 @@ public class UserProfile extends Fragment {
 
         cc = (Controller) getContext().getApplicationContext();
 
-        name = (TextView) view.findViewById(R.id.Name);
+        name = (EditText) view.findViewById(R.id.nameInput);
         phone = (TextView) view.findViewById(R.id.Phone);
-        email = (TextView) view.findViewById(R.id.Email);
+        email = (EditText) view.findViewById(R.id.emailInput);
         logout = (FButton) view.findViewById(R.id.profile_log_out);
 
         name.setText(cc.getUserName());
         phone.setText(cc.getUserMobile());
         email.setText(cc.getUserEmail());
+
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(getActivity(), LoginPage.class);
-                Toast.makeText(getActivity(), "You Are Logged Out!", Toast.LENGTH_LONG).show();
 
-                startActivity(i);
+                cc.setUserName(name.getText().toString());
+                cc.setUserEmail(email.getText().toString());
+                name.setText(cc.getUserName());
+                email.setText(cc.getUserEmail());
+
+                Toast.makeText(getActivity(), "Your profile saved!", Toast.LENGTH_LONG).show();
             }
         });
 

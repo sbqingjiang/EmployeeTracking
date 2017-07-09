@@ -16,7 +16,7 @@
         android:id="@+id/totalHours"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="bottom"
+        android:gravity="center"
         android:text="Your Total Work Hour: 16 Hours"
         android:textAlignment="center"
         android:textSize="20sp"
