@@ -27,7 +27,7 @@ public class SplashPage extends AppCompatActivity {
         Thread timerThread = new Thread(){
             public void run(){
                 try{
-                    sleep(5000);
+                    sleep(2000);
                     if (sp.getString("OTP", "").equals("")) {
                         Intent intent = new Intent(SplashPage.this, LoginPage.class);
                         startActivity(intent);
