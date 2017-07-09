@@ -3,6 +3,7 @@ package com.tracking.employeetracking.fragments.map;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -46,8 +47,9 @@ public class Map extends Fragment implements OnMapReadyCallback {
     private StringBuilder sb = new StringBuilder("http://rjtmobile.com/aamir/emp-mgt-sys/apps/clock_in.php? mobile= 55565454&notes=sorry I m late I missed my bus");
     private String url_shift="http://rjtmobile.com/aamir/emp-mgt-sys/apps/emp_in_shift.php?shiftID=1";
 
+    @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.frag_map, container, false);
         tv_shift = (TextView) view.findViewById(R.id.next_shift);
         tv_date = (TextView) view.findViewById(R.id.shift_date);
@@ -95,12 +97,14 @@ public class Map extends Fragment implements OnMapReadyCallback {
                     tv_shift.setText(startTime.substring(0,5));
 
                     endTime = obj.getString("ShiftEndTime");
+                    Toast.makeText(getContext(), endTime, Toast.LENGTH_SHORT).show();
                     tv_shift.append("p-");
                     tv_shift.append(endTime.substring(0,5));
                     tv_shift.append("p");
 
                     dateTime = obj.getString("ShiftDate");
                     tv_date.setText(dateTime);
+                    Toast.makeText(getContext(), startTime, Toast.LENGTH_LONG).show();
                     ;
                     //endTime = info.getString("ShiftEndTime");
                     //date = info.getString("ShiftDate");
