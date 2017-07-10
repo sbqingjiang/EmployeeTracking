@@ -44,13 +44,15 @@ public class HomePage extends AppCompatActivity {
         }
 
     }
+
     // initialize views
     private void initViews() {
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         mNavigationView = (NavigationView) findViewById(R.id.nav_view);
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
     }
-   //setActionBar
+
+    //setActionBar
     private void setActionBar() {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -65,6 +67,7 @@ public class HomePage extends AppCompatActivity {
         mDrawerLayout.addDrawerListener(toggle);
         toggle.syncState();
     }
+
     // set navigation drawer items click listener
     private void setListener() {
         mNavigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {

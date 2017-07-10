@@ -68,14 +68,14 @@ public class Map extends Fragment implements OnMapReadyCallback {
         mapFragment.getMapAsync(this);
         requestInfor();
 
-        LinearLayout linear_email=(LinearLayout)view.findViewById(R.id.linear_emial);
+        LinearLayout linear_email = (LinearLayout) view.findViewById(R.id.linear_emial);
         LinearLayout liear = (LinearLayout) view.findViewById(R.id.linearLayout);
         liear.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
                 //showEmailDialog();
-                 showDialog();
+                showDialog();
                 //sendGmail(getActivity(),"test","test");
 
             }
@@ -88,6 +88,7 @@ public class Map extends Fragment implements OnMapReadyCallback {
         });
         return view;
     }
+
     // create google map
     @Override
     public void onMapReady(GoogleMap googleMap) {
@@ -96,7 +97,7 @@ public class Map extends Fragment implements OnMapReadyCallback {
         googleMap.addMarker(new MarkerOptions().position(sydney)
                 .title("Marker in Office")).setIcon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE));
 //      googleMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
-       // marker.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_ROSE));
+        // marker.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_ROSE));
         Circle circle = googleMap.addCircle(new CircleOptions()
                 .center(sydney)
                 .radius(1000)
@@ -110,6 +111,7 @@ public class Map extends Fragment implements OnMapReadyCallback {
         googleMap.moveCamera(center);
         googleMap.animateCamera(zoom);
     }
+
     // get next time shift information from url
     public void requestInfor() {
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
@@ -184,6 +186,7 @@ public class Map extends Fragment implements OnMapReadyCallback {
         });
         dialog.show();
     }
+
     // submit clock in note to server
     public void submit(String url) {
 
@@ -205,6 +208,7 @@ public class Map extends Fragment implements OnMapReadyCallback {
         RequestQueue queue = Volley.newRequestQueue(getContext());
         queue.add(stringRequest);
     }
+
     // send gmail
     public void sendGmail(Activity activity, String subject, String text) {
         Intent gmailIntent = new Intent();
@@ -213,10 +217,11 @@ public class Map extends Fragment implements OnMapReadyCallback {
         gmailIntent.putExtra(android.content.Intent.EXTRA_TEXT, text);
         try {
             activity.startActivity(gmailIntent);
-        } catch(ActivityNotFoundException ex) {
+        } catch (ActivityNotFoundException ex) {
             // handle error
         }
     }
+
     public void showEmailDialog() {
         LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         final View customTitleView = inflater.inflate(R.layout.email_title, null);
@@ -226,20 +231,20 @@ public class Map extends Fragment implements OnMapReadyCallback {
                 .inflate(R.layout.dialog_email, null);
         builder.setView(dialogView);
         final EditText title = (EditText) dialogView.findViewById(R.id.editTitle);
-        final EditText content=(EditText)dialogView.findViewById(R.id.editText);
+        final EditText content = (EditText) dialogView.findViewById(R.id.editText);
         Button cancel = (Button) dialogView.findViewById(R.id.cancel_email);
         Button send = (Button) dialogView.findViewById(R.id.send_email);
         final AlertDialog dialog = builder.create();
         cancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-              dialog.dismiss();
+                dialog.dismiss();
             }
         });
         send.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                sendGmail(getActivity(),title.getText().toString(),content.getText().toString());
+                sendGmail(getActivity(), title.getText().toString(), content.getText().toString());
                 dialog.dismiss();
             }
         });

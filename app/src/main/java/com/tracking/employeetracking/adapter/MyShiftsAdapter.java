@@ -3,15 +3,11 @@ package com.tracking.employeetracking.adapter;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.tracking.employeetracking.Controller;
 import com.tracking.employeetracking.R;
 import com.tracking.employeetracking.model.MyShiftsInfo;
 
@@ -21,7 +17,7 @@ import java.util.ArrayList;
  * Created by Eve on 7/3/17.
  */
 
-public class MyShiftsAdapter extends RecyclerView.Adapter<MyShiftsAdapter.ViewHolder>{
+public class MyShiftsAdapter extends RecyclerView.Adapter<MyShiftsAdapter.ViewHolder> {
 
     ArrayList<MyShiftsInfo> mList;
     private Context mContext;
@@ -49,7 +45,7 @@ public class MyShiftsAdapter extends RecyclerView.Adapter<MyShiftsAdapter.ViewHo
         final MyShiftsInfo mInfo = mList.get(position);
         holder.myshifts_date.setText(mInfo.getDate());
         holder.myshifts_time.setText(mInfo.getStartTime() + " - " + mInfo.getEndTime());
-        holder.myshifts_location.setText(sp.getString("UserName", "")+ " at " + mInfo.getLocation());  // or cc
+        holder.myshifts_location.setText(sp.getString("UserName", "") + " at " + mInfo.getLocation());  // or cc
     }
 
     @Override

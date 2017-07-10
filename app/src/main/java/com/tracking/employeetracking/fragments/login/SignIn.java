@@ -84,7 +84,7 @@ public class SignIn extends Fragment {
         StringRequest stringRequest = new StringRequest(Request.Method.GET, sb.toString(), new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-                if(response.contains("success")){
+                if (response.contains("success")) {
 
                     fetchFromLocal();
 
@@ -101,7 +101,7 @@ public class SignIn extends Fragment {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(getActivity(), error.toString(), Toast.LENGTH_LONG ).show();
+                Toast.makeText(getActivity(), error.toString(), Toast.LENGTH_LONG).show();
             }
         });
 

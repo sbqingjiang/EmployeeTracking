@@ -31,11 +31,6 @@ public class Controller extends Application {
     }
 
 
-
-
-
-
-
     public String getOtp() {
         return this.otp;
     }

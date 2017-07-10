@@ -108,14 +108,14 @@ public class Register extends Fragment {
                         Toast.makeText(getActivity(), "Mobile Number Already Registered", Toast.LENGTH_LONG).show();
                     }
                 } catch (JSONException e) {
-                    Toast.makeText(getActivity(), e.toString(), Toast.LENGTH_LONG ).show();
+                    Toast.makeText(getActivity(), e.toString(), Toast.LENGTH_LONG).show();
                     // or e.printStackTrace();
                 }
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(getActivity(), error.toString(), Toast.LENGTH_LONG ).show();
+                Toast.makeText(getActivity(), error.toString(), Toast.LENGTH_LONG).show();
             }
         });
 

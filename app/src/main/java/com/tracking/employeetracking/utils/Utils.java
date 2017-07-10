@@ -5,7 +5,7 @@ package com.tracking.employeetracking.utils;
  */
 
 public class Utils {
-    public static final String Dashboard_Fragment="Dashboard_Fragment";
-    public static final String Map_Fragment="Map_Fragment";
-    public static final String MyShiftsFragmentHost="MyShiftsFragmentHost";
+    public static final String Dashboard_Fragment = "Dashboard_Fragment";
+    public static final String Map_Fragment = "Map_Fragment";
+    public static final String MyShiftsFragmentHost = "MyShiftsFragmentHost";
 }

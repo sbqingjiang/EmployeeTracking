@@ -20,7 +20,7 @@ import it.sephiroth.android.library.picasso.Picasso;
  * Created by Eve on 7/6/17.
  */
 
-public class ScheduleAdapter extends RecyclerView.Adapter<ScheduleAdapter.ViewHolder>{
+public class ScheduleAdapter extends RecyclerView.Adapter<ScheduleAdapter.ViewHolder> {
 
     ArrayList<ScheduleInfo> mList;
     private Context mContext;

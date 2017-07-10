@@ -21,11 +21,11 @@ public class SplashPage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_page);
 
-        sp = getBaseContext().getSharedPreferences("mSharedPref",Context.MODE_PRIVATE);
+        sp = getBaseContext().getSharedPreferences("mSharedPref", Context.MODE_PRIVATE);
 
-        Thread timerThread = new Thread(){
-            public void run(){
-                try{
+        Thread timerThread = new Thread() {
+            public void run() {
+                try {
                     sleep(2000);
                     if (sp.getString("OTP", "").equals("")) {
                         Intent intent = new Intent(SplashPage.this, LoginPage.class);
@@ -34,9 +34,9 @@ public class SplashPage extends AppCompatActivity {
                         Intent intent = new Intent(SplashPage.this, HomePage.class);
                         startActivity(intent);
                     }
-                }catch(InterruptedException e){
+                } catch (InterruptedException e) {
                     e.printStackTrace();
-                }finally{
+                } finally {
                 }
             }
         };
