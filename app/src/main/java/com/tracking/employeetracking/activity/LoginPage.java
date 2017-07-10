@@ -19,7 +19,6 @@ public class LoginPage extends FragmentActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_page);
 
-
         if (findViewById(R.id.login_container) != null) {
 
             if (savedInstanceState == null) {
@@ -28,7 +27,6 @@ public class LoginPage extends FragmentActivity {
 
                 getSupportFragmentManager().beginTransaction()
                         .add(R.id.login_container, register).commit();
-
             }
         }
 
