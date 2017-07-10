@@ -6,12 +6,16 @@ import com.tracking.employeetracking.activity.LoginPage;
 
 import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.TestRule;
+import org.junit.runner.Description;
+import org.junit.runners.model.Statement;
 
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.action.ViewActions.click;
 import static android.support.test.espresso.action.ViewActions.closeSoftKeyboard;
 import static android.support.test.espresso.action.ViewActions.typeText;
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
+import static android.support.test.espresso.contrib.DrawerActions.open;
 import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static android.support.test.espresso.matcher.ViewMatchers.withText;
@@ -30,8 +34,8 @@ public class ActivityLoginTest {
     public void activityLaunch() {
 
         onView(withText("LoginPage"));
- //       onView(withId(R.layout.activity_login_page)).check(matches(isDisplayed()));
-//        onView(withId(R.layout.frag_register)).check(matches(isDisplayed()));
+        onView(withId(R.id.login_container)).check(matches(isDisplayed()));
+        onView(withId(R.id.fragment3)).check(matches(isDisplayed()));
 //        onView(withId(R.id.fragment1)).check(matches(isDisplayed()));
     }
 
@@ -41,18 +45,15 @@ public class ActivityLoginTest {
         onView(withText("Register"));
         onView(withId(R.id.fragment3)).check(matches(isDisplayed()));
         onView(withId(R.id.mblInput)).check(matches(isDisplayed()))
-            .perform(typeText("677665453"), closeSoftKeyboard());
-
+                .perform(typeText("6754643547665453"), closeSoftKeyboard());
         onView(withId(R.id.registerBtn)).perform(click()).check(matches(isDisplayed()));
     }
 
     @Test
     public void signinL() {
 
-    //    onView(withText("Signin")).check(matches(isDisplayed()));
-  //      onView(withId(R.id.otp_show)).check(matches(isDisplayed()));
-   //     onView(withId(R.id.signinBtn)).perform(click()).check(matches(isDisplayed()));
-
+        onView(withId(R.id.otp_show));
+        onView(withId(R.id.signinBtn));
     }
 
 }
