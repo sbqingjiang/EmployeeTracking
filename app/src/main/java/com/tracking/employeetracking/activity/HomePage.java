@@ -9,28 +9,25 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
-import android.widget.TextView;
 
-import com.tracking.employeetracking.Controller;
 import com.tracking.employeetracking.R;
 import com.tracking.employeetracking.fragments.map.Map;
 import com.tracking.employeetracking.fragments.profile.UserProfile;
 import com.tracking.employeetracking.fragments.schedule.MyShiftsFragmentHost;
 
+// HomePage Activity holder of all fragments
 public class HomePage extends AppCompatActivity {
     private ActionBarDrawerToggle toggle;
     private Toolbar toolbar;
     private NavigationView mNavigationView;
     private DrawerLayout mDrawerLayout;
-   // private TextView headerUserName;
-  //  Controller cc;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_page);
 
-       // cc = (Controller) getApplicationContext();
+        // cc = (Controller) getApplicationContext();
         //headerUserName = (TextView) findViewById(R.id.header_username);
 
         initViews();
@@ -39,22 +36,21 @@ public class HomePage extends AppCompatActivity {
         setDrawerToggle();
 
         setListener();
-
-        if (findViewById(R.id.home_container)!=null) {
+        // home page container to holder all fragments
+        if (findViewById(R.id.home_container) != null) {
             if (savedInstanceState == null) {
                 getSupportFragmentManager().beginTransaction().add(R.id.home_container, new Map()).addToBackStack(null).commit();
             }
         }
 
-       // headerUserName.setText(cc.getUserName());
     }
-
+    // initialize views
     private void initViews() {
-        toolbar= (Toolbar) findViewById(R.id.toolbar);
-        mNavigationView= (NavigationView) findViewById(R.id.nav_view);
-        mDrawerLayout= (DrawerLayout) findViewById(R.id.drawer_layout);
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        mNavigationView = (NavigationView) findViewById(R.id.nav_view);
+        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
     }
-
+   //setActionBar
     private void setActionBar() {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -65,29 +61,28 @@ public class HomePage extends AppCompatActivity {
     }
 
     private void setDrawerToggle() {
-        toggle = new ActionBarDrawerToggle(this, mDrawerLayout, toolbar,R.string.open, R.string.close);
+        toggle = new ActionBarDrawerToggle(this, mDrawerLayout, toolbar, R.string.open, R.string.close);
         mDrawerLayout.addDrawerListener(toggle);
-        /*同步drawerlayout的状态*/
         toggle.syncState();
     }
-
+    // set navigation drawer items click listener
     private void setListener() {
         mNavigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(MenuItem item) {
                 switch (item.getItemId()) {
                     case R.id.schedule:
-                        getSupportFragmentManager().beginTransaction().replace(R.id.home_container,new MyShiftsFragmentHost()).addToBackStack(null).commit();
+                        getSupportFragmentManager().beginTransaction().replace(R.id.home_container, new MyShiftsFragmentHost()).addToBackStack(null).commit();
                         break;
                     case R.id.dashboard:
                         getSupportFragmentManager().beginTransaction().replace(R.id.home_container, new Map()).addToBackStack(null).commit();
                         break;
                     case R.id.logout:
-                        Intent it=new Intent(HomePage.this,LoginPage.class);
+                        Intent it = new Intent(HomePage.this, LoginPage.class);
                         startActivity(it);
                         break;
                     case R.id.profile:
-                        getSupportFragmentManager().beginTransaction().replace(R.id.home_container,new UserProfile()).addToBackStack(null).commit();
+                        getSupportFragmentManager().beginTransaction().replace(R.id.home_container, new UserProfile()).addToBackStack(null).commit();
                         break;
                 }
                 mDrawerLayout.closeDrawer(GravityCompat.START);

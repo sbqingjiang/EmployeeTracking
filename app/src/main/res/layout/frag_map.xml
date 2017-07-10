@@ -98,21 +98,25 @@
                 android:orientation="horizontal">
 
                 <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/circle1"
                     android:layout_width="60dp"
                     android:layout_height="60dp"
                     android:src="@drawable/doctor" />
 
                 <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/circle2"
                     android:layout_width="60dp"
                     android:layout_height="60dp"
                     android:src="@drawable/p1" />
 
                 <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/circle3"
                     android:layout_width="60dp"
                     android:layout_height="60dp"
                     android:src="@drawable/p2" />
 
                 <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/circle4"
                     android:layout_width="60dp"
                     android:layout_height="60dp"
                     android:src="@drawable/p3" />

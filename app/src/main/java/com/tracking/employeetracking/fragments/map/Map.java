@@ -42,7 +42,7 @@ import static com.tracking.employeetracking.R.layout.dialog;
 /**
  * Created by yinqingjiang on 7/5/17.
  */
-
+// main fragment of homepage shows office location and clock in
 public class Map extends Fragment implements OnMapReadyCallback {
     private TextView tv_shift;
     private TextView tv_date;
@@ -74,14 +74,14 @@ public class Map extends Fragment implements OnMapReadyCallback {
         });
         return view;
     }
-
+    // create google map
     @Override
     public void onMapReady(GoogleMap googleMap) {
 
         LatLng sydney = new LatLng(41.9797770, -88.5337430);
         googleMap.addMarker(new MarkerOptions().position(sydney)
                 .title("Marker in Office"));
-//        googleMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+//      googleMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
 
         Circle circle = googleMap.addCircle(new CircleOptions()
                 .center(sydney)
@@ -96,7 +96,7 @@ public class Map extends Fragment implements OnMapReadyCallback {
         googleMap.moveCamera(center);
         googleMap.animateCamera(zoom);
     }
-
+    // get next time shift information from url
     public void requestInfor() {
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
             @Override
@@ -136,30 +136,7 @@ public class Map extends Fragment implements OnMapReadyCallback {
         RequestQueue queue = Volley.newRequestQueue(getContext());
         queue.add(stringRequest);
     }
-
-    public void clockIn() {
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, sb.toString(), new Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
-                if (response.contains("updated")) {
-
-                    Toast.makeText(getActivity(), "Welcome to Employee Tracking!", Toast.LENGTH_LONG).show();
-                } else { //  not match
-
-                    Toast.makeText(getActivity(), "Your phone and OTP do not match", Toast.LENGTH_LONG).show();
-                }
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Toast.makeText(getActivity(), error.toString(), Toast.LENGTH_LONG).show();
-            }
-        });
-
-        RequestQueue queue = Volley.newRequestQueue(getContext());
-        queue.add(stringRequest);
-    }
-
+    // show alert dialog
     public void showDialog() {
         LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         final View customTitleView = inflater.inflate(R.layout.dialog_title, null);
@@ -168,9 +145,9 @@ public class Map extends Fragment implements OnMapReadyCallback {
         final View dialogView = LayoutInflater.from(getActivity())
                 .inflate(dialog, null);
         builder.setView(dialogView);
-        EditText editText=(EditText)dialogView.findViewById(R.id.editText);
-        Button cancel=(Button) dialogView.findViewById(R.id.cancel);
-        Button clockin=(Button)dialogView.findViewById(R.id.checkin);
+        final EditText editText = (EditText) dialogView.findViewById(R.id.editText);
+        Button cancel = (Button) dialogView.findViewById(R.id.cancel);
+        Button clockin = (Button) dialogView.findViewById(R.id.checkin);
         final AlertDialog dialog = builder.create();
 
 
@@ -184,19 +161,23 @@ public class Map extends Fragment implements OnMapReadyCallback {
         clockin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                sb.append(editText.getText().toString().trim());
+                submit(sb.toString());
+                dialog.dismiss();
 
             }
         });
         dialog.show();
     }
-
-    public void submit()
-    {
+    // submit clock in note to server
+    public void submit(String url) {
 
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
+                if (response.contains("updated")) {
+                    Toast.makeText(getActivity(), "Attendance note updated", Toast.LENGTH_LONG).show();
+                }
 
             }
         }, new Response.ErrorListener() {
