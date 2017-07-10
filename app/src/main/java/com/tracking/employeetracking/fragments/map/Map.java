@@ -29,7 +29,6 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
-import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.Circle;
 import com.google.android.gms.maps.model.CircleOptions;
 import com.google.android.gms.maps.model.LatLng;
@@ -95,13 +94,14 @@ public class Map extends Fragment implements OnMapReadyCallback {
 
         LatLng sydney = new LatLng(41.9797770, -88.5337430);
         googleMap.addMarker(new MarkerOptions().position(sydney)
-                .title("Marker in Office")).setIcon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE));
+                .title("Marker in Office")) ;
+        //setIcon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE));
 //      googleMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
         // marker.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_ROSE));
         Circle circle = googleMap.addCircle(new CircleOptions()
                 .center(sydney)
                 .radius(1000)
-                .strokeColor(Color.BLUE)
+                .strokeColor(Color.parseColor("#4fb2ff"))
                 .fillColor(Color.parseColor("#BBDEFB")));
 
         CameraUpdate center =
