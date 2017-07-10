@@ -54,7 +54,7 @@ public class SignIn extends Fragment {
         otp = sp.getString("OTP", "");
         sb.append(otp);
 
-        otpshow = (TextView) root.findViewById(R.id.opt_show);
+        otpshow = (TextView) root.findViewById(R.id.otp_show);
         signinBtn = (FButton) root.findViewById(R.id.signinBtn);
 
         signinBtn.setText("Sign in");

@@ -74,8 +74,7 @@ public class ActivityNavigationTest {
     }
     //dashboard
     @Test
-    public void profile()
-    {
+    public void profile() {
         onView(withId(R.id.drawer_layout)).perform(open());
         onView(withText("Profile"))
                 .perform(click());

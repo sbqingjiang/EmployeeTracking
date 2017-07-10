@@ -19,7 +19,7 @@
             android:id="@+id/schedule_date_range"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="                     January 15 - 21                   "
+            android:text="                            July 3 - 9                         "
             android:textAlignment="center"
             android:textSize="18sp" />
 

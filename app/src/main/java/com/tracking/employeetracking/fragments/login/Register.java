@@ -57,7 +57,7 @@ public class Register extends Fragment {
         fm = getFragmentManager();
         sp = getContext().getSharedPreferences("mSharedPref", Context.MODE_PRIVATE);
         editor = sp.edit();
-        editor.clear();
+        //editor.clear();
 
 
         registerButton.setOnClickListener(new View.OnClickListener() {
@@ -71,7 +71,7 @@ public class Register extends Fragment {
     }
 
 
-    public void validation() {
+    public boolean validation() {
 
         mobileU = mobile.getText().toString().trim();
         if (mobileU.length() == 0) {
@@ -79,11 +79,13 @@ public class Register extends Fragment {
         } else {
 
             registerUser();
+            return true;
         }
+        return false;
     }
 
 
-    public void registerUser() {
+    public boolean registerUser() {
 
         sb.append(mobileU);
         StringRequest stringRequest = new StringRequest(Request.Method.GET, sb.toString(), new Response.Listener<String>() {
@@ -100,7 +102,6 @@ public class Register extends Fragment {
                         saveToLocal();
 
                         Toast.makeText(getActivity(), "Register Succeed!", Toast.LENGTH_LONG).show();
-                        Toast.makeText(getActivity(), "You can login now!", Toast.LENGTH_LONG).show();
                         jumpToSignin();
 
                     } else {
@@ -120,24 +121,29 @@ public class Register extends Fragment {
 
         RequestQueue queue = Volley.newRequestQueue(getContext());
         queue.add(stringRequest);
+        return true;
     }
 
 
     public void saveToLocal() {
 
+        cc.setUserMobile(mobileU);
         editor.putString("UserMobile", mobileU);
         editor.putString("OTP", otp);
+        editor.putString("UserName", "Yu");
+        editor.putString("UserEmail", "Yu@gmail.com");
 
         editor.commit();  // or apply
     }
 
-    public void jumpToSignin() {
+    public boolean jumpToSignin() {
 
         SignIn signin = new SignIn();
         ft = fm.beginTransaction();
         ft.replace(R.id.login_container, signin);
         ft.addToBackStack(null);
         ft.commit();
+        return true;
     }
 
 }

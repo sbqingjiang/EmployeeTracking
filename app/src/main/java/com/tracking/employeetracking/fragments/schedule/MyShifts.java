@@ -31,7 +31,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 
 /**
- * Created by yinqingjiang on 7/2/17.
+ * Created by Eve on 7/2/17.
  */
 
 public class MyShifts extends Fragment {
