@@ -21,7 +21,7 @@ import java.util.ArrayList;
  * Created by Eve on 7/3/17.
  */
 
-public class MyShiftsAdapter extends RecyclerView.Adapter<MyShiftsAdapter.ViewHolder>{
+public class MyShiftsAdapter extends RecyclerView.Adapter<MyShiftsAdapter.ViewHolder> {
 
     ArrayList<MyShiftsInfo> mList;
     private Context mContext;
@@ -49,7 +49,7 @@ public class MyShiftsAdapter extends RecyclerView.Adapter<MyShiftsAdapter.ViewHo
         final MyShiftsInfo mInfo = mList.get(position);
         holder.myshifts_date.setText(mInfo.getDate());
         holder.myshifts_time.setText(mInfo.getStartTime() + " - " + mInfo.getEndTime());
-        holder.myshifts_location.setText(sp.getString("UserName", "")+ " at " + mInfo.getLocation());  // or cc
+        holder.myshifts_location.setText(sp.getString("UserName", "") + " at " + mInfo.getLocation());  // or cc
     }
 
     @Override

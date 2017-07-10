@@ -66,11 +66,12 @@ public class SignIn extends Fragment {
             }
         });
 
+
         otpshow.setText("Your OTP generated: " + otp);
         return root;
     }
 
-
+    // get local otp, waiting for comparason
     public void fetchFromLocal() {
 
         mobileU = sp.getString("UserMobile", "");
@@ -79,12 +80,12 @@ public class SignIn extends Fragment {
         cc.setOtp(otp);
     }
 
-
+    // compare the local otp & otp from webservice to see if match
     public void loginUser() {
         StringRequest stringRequest = new StringRequest(Request.Method.GET, sb.toString(), new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-                if(response.contains("success")){
+                if (response.contains("success")) {
 
                     fetchFromLocal();
 
@@ -101,7 +102,7 @@ public class SignIn extends Fragment {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(getActivity(), error.toString(), Toast.LENGTH_LONG ).show();
+                Toast.makeText(getActivity(), error.toString(), Toast.LENGTH_LONG).show();
             }
         });
 

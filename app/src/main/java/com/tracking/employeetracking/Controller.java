@@ -14,9 +14,9 @@ public class Controller extends Application {
     private static Controller mInstance;
 
 
-    public String userName = "Yu";
+    public String userName;
     public String userMobile;
-    public String userEmail = "Yu@gmail.com";
+    public String userEmail;
     public String otp;
 
 
@@ -29,11 +29,6 @@ public class Controller extends Application {
     public static synchronized Controller getInstance() {
         return mInstance;
     }
-
-
-
-
-
 
 
     public String getOtp() {

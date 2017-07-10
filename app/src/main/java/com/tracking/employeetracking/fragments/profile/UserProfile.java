@@ -48,6 +48,7 @@ public class UserProfile extends Fragment {
         phone.setText(sp.getString("UserMobile", ""));
         email.setText(sp.getString("UserEmail", ""));
 
+        // save user profile after edited
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -57,7 +58,7 @@ public class UserProfile extends Fragment {
                 editor.commit();
 
                 name.setText(sp.getString("UserName", ""));
-                email.setText(sp.getString("UserName", ""));
+                email.setText(sp.getString("UserEmail", ""));
 
                 Toast.makeText(getActivity(), "Your profile saved!", Toast.LENGTH_LONG).show();
             }

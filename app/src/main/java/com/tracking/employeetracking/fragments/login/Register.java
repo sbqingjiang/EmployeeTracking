@@ -70,7 +70,7 @@ public class Register extends Fragment {
         return root;
     }
 
-
+    // make sure user input phone is not null
     public boolean validation() {
 
         mobileU = mobile.getText().toString().trim();
@@ -84,7 +84,7 @@ public class Register extends Fragment {
         return false;
     }
 
-
+    // register for otp using phone through web service
     public boolean registerUser() {
 
         sb.append(mobileU);
@@ -124,7 +124,7 @@ public class Register extends Fragment {
         return true;
     }
 
-
+    // save the mobile & otp to local through sp
     public void saveToLocal() {
 
         cc.setUserMobile(mobileU);
@@ -136,6 +136,7 @@ public class Register extends Fragment {
         editor.commit();  // or apply
     }
 
+    // register succeed, go to sign in page
     public boolean jumpToSignin() {
 
         SignIn signin = new SignIn();

@@ -17,7 +17,7 @@ import com.tracking.employeetracking.R;
  * Created by Eve on 7/3/17.
  */
 
-public class MyShiftsFragmentHost extends Fragment{
+public class MyShiftsFragmentHost extends Fragment {
     private FragmentTabHost mTabhost;
 
     @Override
@@ -25,7 +25,7 @@ public class MyShiftsFragmentHost extends Fragment{
         //View view = inflater.inflate(R.layout.frag_host_myshifts, container, false);
 
         mTabhost = new FragmentTabHost(getContext());
-        mTabhost.setup(getActivity(),getChildFragmentManager(), R.layout.frag_host_myshifts);
+        mTabhost.setup(getActivity(), getChildFragmentManager(), R.layout.frag_host_myshifts);
         mTabhost.addTab(mTabhost.newTabSpec("myshifts").setIndicator("My Shifts"), MyShifts.class, null);
         mTabhost.addTab(mTabhost.newTabSpec("schedule").setIndicator("Schedule"), Schedule.class, null);
         mTabhost.addTab(mTabhost.newTabSpec("openshifts").setIndicator("Open Shifts"), OpenShifts.class, null);

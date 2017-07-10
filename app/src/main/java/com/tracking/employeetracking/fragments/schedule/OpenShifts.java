@@ -19,14 +19,8 @@ public class OpenShifts extends Fragment {
         View view = inflater.inflate(R.layout.frag_open_shifts, container, false);
 
 
-
-
-
         return view;
     }
-
-
-
 
 
 }

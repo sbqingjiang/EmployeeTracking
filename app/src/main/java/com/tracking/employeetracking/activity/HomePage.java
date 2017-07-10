@@ -1,6 +1,8 @@
 package com.tracking.employeetracking.activity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -21,6 +23,7 @@ public class HomePage extends AppCompatActivity {
     private Toolbar toolbar;
     private NavigationView mNavigationView;
     private DrawerLayout mDrawerLayout;
+    SharedPreferences sp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +39,9 @@ public class HomePage extends AppCompatActivity {
         setDrawerToggle();
 
         setListener();
+        sp = getSharedPreferences("mSharedPref", Context.MODE_PRIVATE);
+
+
         // home page container to holder all fragments
         if (findViewById(R.id.home_container) != null) {
             if (savedInstanceState == null) {
@@ -44,13 +50,15 @@ public class HomePage extends AppCompatActivity {
         }
 
     }
+
     // initialize views
     private void initViews() {
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         mNavigationView = (NavigationView) findViewById(R.id.nav_view);
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
     }
-   //setActionBar
+
+    //setActionBar
     private void setActionBar() {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -65,6 +73,7 @@ public class HomePage extends AppCompatActivity {
         mDrawerLayout.addDrawerListener(toggle);
         toggle.syncState();
     }
+
     // set navigation drawer items click listener
     private void setListener() {
         mNavigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
@@ -79,6 +88,7 @@ public class HomePage extends AppCompatActivity {
                         break;
                     case R.id.logout:
                         Intent it = new Intent(HomePage.this, LoginPage.class);
+                        sp.edit().clear().commit();
                         startActivity(it);
                         break;
                     case R.id.profile:
