@@ -22,12 +22,12 @@
         <activity android:name=".activity.LoginPage" />
         <activity android:name=".activity.HomePage" />
 
-        <!--meta-data
-            android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyA4oYh57HSKRsPCGo1QvOqW2wOiVFh5g70" /-->
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyDQzqNdfGKEy3Z9xAaBAeIpMugOcHQvWqU" />
+            android:value="AIzaSyA4oYh57HSKRsPCGo1QvOqW2wOiVFh5g70" />
+        <!--<meta-data-->
+            <!--android:name="com.google.android.geo.API_KEY"-->
+            <!--android:value="AIzaSyDQzqNdfGKEy3Z9xAaBAeIpMugOcHQvWqU" />-->
 
         <meta-data
             android:name="com.google.android.gms.version"

@@ -6,16 +6,12 @@ import com.tracking.employeetracking.activity.LoginPage;
 
 import org.junit.Rule;
 import org.junit.Test;
-import org.junit.rules.TestRule;
-import org.junit.runner.Description;
-import org.junit.runners.model.Statement;
 
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.action.ViewActions.click;
 import static android.support.test.espresso.action.ViewActions.closeSoftKeyboard;
 import static android.support.test.espresso.action.ViewActions.typeText;
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
-import static android.support.test.espresso.contrib.DrawerActions.open;
 import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static android.support.test.espresso.matcher.ViewMatchers.withText;
@@ -53,7 +49,7 @@ public class ActivityLoginTest {
     @Test
     public void signinL() {
 
-        onView(withText("Signin"));
+    //    onView(withText("Signin")).check(matches(isDisplayed()));
   //      onView(withId(R.id.otp_show)).check(matches(isDisplayed()));
    //     onView(withId(R.id.signinBtn)).perform(click()).check(matches(isDisplayed()));
 

@@ -1,7 +1,10 @@
 package com.tracking.employeetracking.fragments.map;
 
+import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.ActivityNotFoundException;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -26,6 +29,7 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.Circle;
 import com.google.android.gms.maps.model.CircleOptions;
 import com.google.android.gms.maps.model.LatLng;
@@ -64,12 +68,22 @@ public class Map extends Fragment implements OnMapReadyCallback {
         mapFragment.getMapAsync(this);
         requestInfor();
 
-
+        LinearLayout linear_email=(LinearLayout)view.findViewById(R.id.linear_emial);
         LinearLayout liear = (LinearLayout) view.findViewById(R.id.linearLayout);
         liear.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                showDialog();
+
+                //showEmailDialog();
+                 showDialog();
+                //sendGmail(getActivity(),"test","test");
+
+            }
+        });
+        linear_email.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showEmailDialog();
             }
         });
         return view;
@@ -80,14 +94,14 @@ public class Map extends Fragment implements OnMapReadyCallback {
 
         LatLng sydney = new LatLng(41.9797770, -88.5337430);
         googleMap.addMarker(new MarkerOptions().position(sydney)
-                .title("Marker in Office"));
+                .title("Marker in Office")).setIcon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE));
 //      googleMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
-
+       // marker.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_ROSE));
         Circle circle = googleMap.addCircle(new CircleOptions()
                 .center(sydney)
                 .radius(1000)
-                .strokeColor(Color.RED)
-                .fillColor(Color.TRANSPARENT));
+                .strokeColor(Color.BLUE)
+                .fillColor(Color.parseColor("#BBDEFB")));
 
         CameraUpdate center =
                 CameraUpdateFactory.newLatLng(sydney);
@@ -136,6 +150,7 @@ public class Map extends Fragment implements OnMapReadyCallback {
         RequestQueue queue = Volley.newRequestQueue(getContext());
         queue.add(stringRequest);
     }
+
     // show alert dialog
     public void showDialog() {
         LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -189,6 +204,47 @@ public class Map extends Fragment implements OnMapReadyCallback {
 
         RequestQueue queue = Volley.newRequestQueue(getContext());
         queue.add(stringRequest);
+    }
+    // send gmail
+    public void sendGmail(Activity activity, String subject, String text) {
+        Intent gmailIntent = new Intent();
+        gmailIntent.setClassName("com.google.android.gm", "com.google.android.gm.ComposeActivityGmail");
+        gmailIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, subject);
+        gmailIntent.putExtra(android.content.Intent.EXTRA_TEXT, text);
+        try {
+            activity.startActivity(gmailIntent);
+        } catch(ActivityNotFoundException ex) {
+            // handle error
+        }
+    }
+    public void showEmailDialog() {
+        LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        final View customTitleView = inflater.inflate(R.layout.email_title, null);
+        final AlertDialog.Builder builder = new AlertDialog.Builder(getContext()).setCustomTitle(customTitleView);
+
+        final View dialogView = LayoutInflater.from(getActivity())
+                .inflate(R.layout.dialog_email, null);
+        builder.setView(dialogView);
+        final EditText title = (EditText) dialogView.findViewById(R.id.editTitle);
+        final EditText content=(EditText)dialogView.findViewById(R.id.editText);
+        Button cancel = (Button) dialogView.findViewById(R.id.cancel_email);
+        Button send = (Button) dialogView.findViewById(R.id.send_email);
+        final AlertDialog dialog = builder.create();
+        cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+              dialog.dismiss();
+            }
+        });
+        send.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                sendGmail(getActivity(),title.getText().toString(),content.getText().toString());
+                dialog.dismiss();
+            }
+        });
+
+        dialog.show();
     }
 
 }

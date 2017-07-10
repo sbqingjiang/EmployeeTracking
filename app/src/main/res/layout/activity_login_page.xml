@@ -8,5 +8,4 @@
     android:background="@color/colorPrimary"
     tools:context=".activity.LoginPage">
 
-
 </FrameLayout>

@@ -151,6 +151,7 @@
                 android:layout_height="match_parent" />
         </LinearLayout>
         <LinearLayout
+            android:id="@+id/linear_emial"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:background="@color/primaryText">
@@ -167,7 +168,7 @@
             <TextView
                 android:paddingLeft="10dp"
                 android:gravity="center_vertical"
-                android:text="Now WorkChat Messages"
+                android:text="Now Send Messages"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />
         </LinearLayout>

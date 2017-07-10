@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="20dp"
+        android:text="Title"
+        android:layout_marginBottom="5dp"/>
+    <EditText
+        android:id="@+id/editTitle"
+        android:paddingLeft="20dp"
+        android:textColor="@color/secondaryText"
+        android:hint="enter your title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="20dp"
+        android:text="Notes:" />
+    <EditText
+        android:id="@+id/editText"
+        android:paddingLeft="20dp"
+        android:textColor="@color/secondaryText"
+        android:hint="enter your notes"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <android.support.v7.widget.AppCompatButton
+            android:id="@+id/cancel_email"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="65dp"
+            android:layout_marginTop="8dp"
+            android:background="@color/colorPrimary"
+            android:text="CANCEL" />
+
+        <android.support.v7.widget.AppCompatButton
+
+            android:id="@+id/send_email"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="8dp"
+            android:background="@color/colorPrimary"
+            android:text="SEND" />
+    </LinearLayout>
+</LinearLayout>
