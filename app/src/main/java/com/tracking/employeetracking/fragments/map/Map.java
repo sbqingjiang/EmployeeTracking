@@ -100,7 +100,7 @@ public class Map extends Fragment implements OnMapReadyCallback {
         // marker.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_ROSE));
         Circle circle = googleMap.addCircle(new CircleOptions()
                 .center(sydney)
-                .radius(1000)
+                .radius(500)
                 .strokeColor(Color.parseColor("#4fb2ff"))
                 .fillColor(Color.parseColor("#BBDEFB")));
 

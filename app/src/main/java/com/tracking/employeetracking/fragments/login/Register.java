@@ -38,9 +38,9 @@ public class Register extends Fragment {
     EditText mobile;
     String mobileU, otp;
 
-    FragmentManager fm;
-    FragmentTransaction ft;
-    SharedPreferences sp;
+    FragmentManager fragmentManager;
+    FragmentTransaction fragmentTransaction;
+    SharedPreferences sharedPreferences;
     SharedPreferences.Editor editor;
     Controller cc;
 
@@ -54,9 +54,9 @@ public class Register extends Fragment {
         registerButton = (FButton) root.findViewById(R.id.registerBtn);
         mobile = (EditText) root.findViewById(R.id.mblInput);
 
-        fm = getFragmentManager();
-        sp = getContext().getSharedPreferences("mSharedPref", Context.MODE_PRIVATE);
-        editor = sp.edit();
+        fragmentManager = getFragmentManager();
+        sharedPreferences = getContext().getSharedPreferences("mSharedPref", Context.MODE_PRIVATE);
+        editor = sharedPreferences.edit();
         //editor.clear();
 
 
@@ -140,10 +140,8 @@ public class Register extends Fragment {
     public boolean jumpToSignin() {
 
         SignIn signin = new SignIn();
-        ft = fm.beginTransaction();
-        ft.replace(R.id.login_container, signin);
-        ft.addToBackStack(null);
-        ft.commit();
+        fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.login_container, signin).addToBackStack(null).commit();
         return true;
     }
 

@@ -4,14 +4,11 @@ import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.DefaultItemAnimator;
-import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -36,27 +33,27 @@ import java.util.ArrayList;
 
 public class MyShifts extends Fragment {
 
-    private StringBuilder sb;
+    private StringBuilder stringBuilder;
     private RecyclerView mRecyclerView;
-    ArrayList<MyShiftsInfo> listData;
+    ArrayList<MyShiftsInfo> myShiftsInfos;
     ProgressDialog progressDialog;
-    Controller cc;
+    Controller controller;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.frag_my_shifts, container, false);
 
-        cc = (Controller) getContext().getApplicationContext();
-        sb = new StringBuilder("http://rjtmobile.com/aamir/emp-mgt-sys/apps/my_shift_info.php?mobile=");
+        controller = (Controller) getContext().getApplicationContext();
+        stringBuilder = new StringBuilder("http://rjtmobile.com/aamir/emp-mgt-sys/apps/my_shift_info.php?mobile=");
         //TODO: update mobile to aamir for more info
-        //sb.append(cc.getUserMobile());
-        sb.append("55565454");
+        //sb.append(controller.getUserMobile());
+        stringBuilder.append("55565454");
 
         mRecyclerView = (RecyclerView) view.findViewById(R.id.frag_my_shifts_recyclerView);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         mRecyclerView.setHasFixedSize(true);
 
-        listData = new ArrayList<>();
+        myShiftsInfos = new ArrayList<>();
 
 
         fetchMyShifts();
@@ -69,7 +66,7 @@ public class MyShifts extends Fragment {
         progressDialog.setMessage("loading data");
 
         progressDialog.show();
-        StringRequest sr = new StringRequest(Request.Method.GET, sb.toString(), new Response.Listener<String>() {
+        StringRequest sr = new StringRequest(Request.Method.GET, stringBuilder.toString(), new Response.Listener<String>() {
 
             @Override
             public void onResponse(String response) {
@@ -86,10 +83,10 @@ public class MyShifts extends Fragment {
                             JSONObject infoObj = jsonArray.getJSONObject(i);
                             MyShiftsInfo info = new MyShiftsInfo(infoObj.getString("ShiftID"), infoObj.getString("ShiftStartTime"),
                                     infoObj.getString("ShiftEndTime"), infoObj.getString("ShiftDate"), infoObj.getString("ShiftLocation"));
-                            listData.add(info);
+                            myShiftsInfos.add(info);
                         }
 
-                        MyShiftsAdapter adapter = new MyShiftsAdapter(listData, getContext());
+                        MyShiftsAdapter adapter = new MyShiftsAdapter(myShiftsInfos, getContext());
                         mRecyclerView.setAdapter(adapter);
                         mRecyclerView.setItemAnimator(new DefaultItemAnimator());
                     }

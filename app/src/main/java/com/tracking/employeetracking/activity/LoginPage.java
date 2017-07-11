@@ -12,7 +12,7 @@ import com.tracking.employeetracking.fragments.login.Register;
  */
 
 public class LoginPage extends FragmentActivity {
-    private static FragmentManager fm;
+    private static FragmentManager fragmentManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

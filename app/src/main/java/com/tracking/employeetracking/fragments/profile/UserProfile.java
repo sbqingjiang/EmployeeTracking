@@ -26,9 +26,9 @@ public class UserProfile extends Fragment {
 
     TextView phone;
     EditText name, email;
-    FButton logout;
+    FButton saveProfile;
     //Controller cc;
-    SharedPreferences sp;
+    SharedPreferences sharedPreferences;
     SharedPreferences.Editor editor;
 
     @Override
@@ -36,20 +36,20 @@ public class UserProfile extends Fragment {
         View view = inflater.inflate(R.layout.frag_user_profile, container, false);
 
         //cc = (Controller) getContext().getApplicationContext();
-        sp = getContext().getSharedPreferences("mSharedPref", Context.MODE_PRIVATE);
-        editor = sp.edit();
+        sharedPreferences = getContext().getSharedPreferences("mSharedPref", Context.MODE_PRIVATE);
+        editor = sharedPreferences.edit();
 
         name = (EditText) view.findViewById(R.id.nameInput);
         phone = (TextView) view.findViewById(R.id.Phone);
         email = (EditText) view.findViewById(R.id.emailInput);
-        logout = (FButton) view.findViewById(R.id.profile_log_out);
+        saveProfile = (FButton) view.findViewById(R.id.save_profile);
 
-        name.setText(sp.getString("UserName", ""));
-        phone.setText(sp.getString("UserMobile", ""));
-        email.setText(sp.getString("UserEmail", ""));
+        name.setText(sharedPreferences.getString("UserName", ""));
+        phone.setText(sharedPreferences.getString("UserMobile", ""));
+        email.setText(sharedPreferences.getString("UserEmail", ""));
 
         // save user profile after edited
-        logout.setOnClickListener(new View.OnClickListener() {
+        saveProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
@@ -57,8 +57,8 @@ public class UserProfile extends Fragment {
                 editor.putString("UserEmail", email.getText().toString());
                 editor.commit();
 
-                name.setText(sp.getString("UserName", ""));
-                email.setText(sp.getString("UserEmail", ""));
+                name.setText(sharedPreferences.getString("UserName", ""));
+                email.setText(sharedPreferences.getString("UserEmail", ""));
 
                 Toast.makeText(getActivity(), "Your profile saved!", Toast.LENGTH_LONG).show();
             }

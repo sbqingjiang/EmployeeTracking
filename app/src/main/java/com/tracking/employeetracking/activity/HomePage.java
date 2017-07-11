@@ -23,7 +23,7 @@ public class HomePage extends AppCompatActivity {
     private Toolbar toolbar;
     private NavigationView mNavigationView;
     private DrawerLayout mDrawerLayout;
-    SharedPreferences sp;
+    SharedPreferences sharedPreferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,7 +39,7 @@ public class HomePage extends AppCompatActivity {
         setDrawerToggle();
 
         setListener();
-        sp = getSharedPreferences("mSharedPref", Context.MODE_PRIVATE);
+        sharedPreferences = getSharedPreferences("mSharedPref", Context.MODE_PRIVATE);
 
 
         // home page container to holder all fragments
@@ -88,7 +88,7 @@ public class HomePage extends AppCompatActivity {
                         break;
                     case R.id.logout:
                         Intent it = new Intent(HomePage.this, LoginPage.class);
-                        sp.edit().clear().commit();
+                        sharedPreferences.edit().clear().commit();
                         startActivity(it);
                         break;
                     case R.id.profile:

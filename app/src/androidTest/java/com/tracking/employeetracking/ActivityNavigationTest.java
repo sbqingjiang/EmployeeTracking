@@ -79,11 +79,11 @@ public class ActivityNavigationTest {
         onView(withText("Profile"))
                 .perform(click());
         onView(withId(R.id.user_image)).check(matches(isDisplayed()));
-        onView(withId(R.id.textView2)).check(matches(isDisplayed()));
+//        onView(withId(R.id.textView2)).check(matches(isDisplayed()));
         onView(withId(R.id.Phone)).check(matches(isDisplayed()));
-        onView(withId(R.id.textView1)).check(matches(isDisplayed()));
-        onView(withId(R.id.textView3)).check(matches(isDisplayed()));
-        onView(withId(R.id.profile_log_out)).check(matches(isDisplayed()));
+//        onView(withId(R.id.textView1)).check(matches(isDisplayed()));
+//        onView(withId(R.id.textView3)).check(matches(isDisplayed()));
+        onView(withId(R.id.save_profile)).check(matches(isDisplayed()));
     }
     @Test
     public void logout()

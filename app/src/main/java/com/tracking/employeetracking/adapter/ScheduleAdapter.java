@@ -25,7 +25,7 @@ public class ScheduleAdapter extends RecyclerView.Adapter<ScheduleAdapter.ViewHo
     ArrayList<ScheduleInfo> mList;
     private Context mContext;
     //Controller cc;
-    SharedPreferences sp;
+    SharedPreferences sharedPreferences;
 
     public ScheduleAdapter(ArrayList<ScheduleInfo> list, Context context) {
         this.mList = list;
@@ -44,11 +44,11 @@ public class ScheduleAdapter extends RecyclerView.Adapter<ScheduleAdapter.ViewHo
     public void onBindViewHolder(ScheduleAdapter.ViewHolder holder, int position) {
 
         //cc = (Controller) mContext.getApplicationContext();
-        sp = mContext.getSharedPreferences("mSharedPref", Context.MODE_PRIVATE);
+        sharedPreferences = mContext.getSharedPreferences("mSharedPref", Context.MODE_PRIVATE);
         final ScheduleInfo mInfo = mList.get(position);
-        holder.schedule_date.setText(mInfo.getDay() + ", " + mInfo.getDate());
-        holder.schedule_time.setText(mInfo.getShiftTime());
-        holder.schedule_designation.setText(mInfo.getEmployeeDesignation());
+        holder.scheduleDate.setText(mInfo.getDay() + ", " + mInfo.getDate());
+        holder.scheduleTime.setText(mInfo.getShiftTime());
+        holder.scheduleDesignation.setText(mInfo.getEmployeeDesignation());
 
         Picasso.with(mContext).load(mInfo.getEmployeeThumb()).into(holder.avatar);
     }
@@ -59,15 +59,15 @@ public class ScheduleAdapter extends RecyclerView.Adapter<ScheduleAdapter.ViewHo
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        private TextView schedule_date, schedule_time, schedule_designation;
+        private TextView scheduleDate, scheduleTime, scheduleDesignation;
         private ImageView avatar;
 
         public ViewHolder(View itemView) {
             super(itemView);
 
-            schedule_date = (TextView) itemView.findViewById(R.id.schedule_date);
-            schedule_time = (TextView) itemView.findViewById(R.id.schedule_time);
-            schedule_designation = (TextView) itemView.findViewById(R.id.schedule_designation);
+            scheduleDate = (TextView) itemView.findViewById(R.id.schedule_date);
+            scheduleTime = (TextView) itemView.findViewById(R.id.schedule_time);
+            scheduleDesignation = (TextView) itemView.findViewById(R.id.schedule_designation);
             avatar = (ImageView) itemView.findViewById(R.id.schedule_avatar);
         }
     }

@@ -14,20 +14,20 @@ import com.tracking.employeetracking.R;
 
 public class SplashPage extends AppCompatActivity {
 
-    SharedPreferences sp;
+    SharedPreferences sharedPreferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_page);
 
-        sp = getBaseContext().getSharedPreferences("mSharedPref", Context.MODE_PRIVATE);
+        sharedPreferences = getBaseContext().getSharedPreferences("mSharedPref", Context.MODE_PRIVATE);
 
         Thread timerThread = new Thread() {
             public void run() {
                 try {
                     sleep(2000);
-                    if (sp.getString("OTP", "").equals("")) {
+                    if (sharedPreferences.getString("OTP", "").equals("")) {
                         Intent intent = new Intent(SplashPage.this, LoginPage.class);
                         startActivity(intent);
                     } else {

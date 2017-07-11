@@ -33,28 +33,28 @@ import info.hoang8f.widget.FButton;
 
 public class SignIn extends Fragment {
     ViewGroup root;
-    FragmentManager fm;
-    FragmentTransaction ft;
+    FragmentManager fragmentManager;
+    FragmentTransaction fragmentTransaction;
     Controller cc;
-    SharedPreferences sp;
+    SharedPreferences sharedPreferences;
 
     FButton signinBtn;
     String mobileU, otp;
-    StringBuilder sb;
-    TextView otpshow;
+    StringBuilder stringBuilder;
+    TextView otpShow;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         root = (ViewGroup) inflater.inflate(R.layout.frag_signin, container, false);
 
         cc = (Controller) getContext().getApplicationContext();
-        fm = getFragmentManager();
-        sp = getContext().getSharedPreferences("mSharedPref", Context.MODE_PRIVATE);
-        sb = new StringBuilder("http://rjtmobile.com/aamir/emp-mgt-sys/apps/verify-OTP.php?otp=");
-        otp = sp.getString("OTP", "");
-        sb.append(otp);
+        fragmentManager = getFragmentManager();
+        sharedPreferences = getContext().getSharedPreferences("mSharedPref", Context.MODE_PRIVATE);
+        stringBuilder = new StringBuilder("http://rjtmobile.com/aamir/emp-mgt-sys/apps/verify-OTP.php?otp=");
+        otp = sharedPreferences.getString("OTP", "");
+        stringBuilder.append(otp);
 
-        otpshow = (TextView) root.findViewById(R.id.otp_show);
+        otpShow = (TextView) root.findViewById(R.id.otp_show);
         signinBtn = (FButton) root.findViewById(R.id.signinBtn);
 
         signinBtn.setText("Sign in");
@@ -67,14 +67,14 @@ public class SignIn extends Fragment {
         });
 
 
-        otpshow.setText("Your OTP generated: " + otp);
+        otpShow.setText("Your OTP generated: " + otp);
         return root;
     }
 
     // get local otp, waiting for comparason
     public void fetchFromLocal() {
 
-        mobileU = sp.getString("UserMobile", "");
+        mobileU = sharedPreferences.getString("UserMobile", "");
 
         cc.setUserMobile(mobileU);
         cc.setOtp(otp);
@@ -82,7 +82,7 @@ public class SignIn extends Fragment {
 
     // compare the local otp & otp from webservice to see if match
     public void loginUser() {
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, sb.toString(), new Response.Listener<String>() {
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, stringBuilder.toString(), new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 if (response.contains("success")) {

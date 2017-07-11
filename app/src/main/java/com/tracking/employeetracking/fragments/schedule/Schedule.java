@@ -2,7 +2,6 @@ package com.tracking.employeetracking.fragments.schedule;
 
 import android.app.ProgressDialog;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
@@ -19,9 +18,7 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.tracking.employeetracking.Controller;
 import com.tracking.employeetracking.R;
-import com.tracking.employeetracking.adapter.MyShiftsAdapter;
 import com.tracking.employeetracking.adapter.ScheduleAdapter;
-import com.tracking.employeetracking.model.MyShiftsInfo;
 import com.tracking.employeetracking.model.ScheduleInfo;
 
 import org.json.JSONArray;
@@ -36,24 +33,24 @@ import java.util.ArrayList;
 
 public class Schedule extends Fragment {
 
-    private StringBuilder sb;
-    private RecyclerView mRecyclerView;
-    ArrayList<ScheduleInfo> listData;
+    private StringBuilder stringBuilder;
+    private RecyclerView recyclerView;
+    ArrayList<ScheduleInfo> scheduleInfos;
     ProgressDialog progressDialog;
-    Controller cc;
+    Controller controller;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.frag_schedule, container, false);
 
-        cc = (Controller) getContext().getApplicationContext();
-        sb = new StringBuilder("http://rjtmobile.com/aamir/emp-mgt-sys/apps/schedule.php?dateRange=July%2015-21");
+        controller = (Controller) getContext().getApplicationContext();
+        stringBuilder = new StringBuilder("http://rjtmobile.com/aamir/emp-mgt-sys/apps/schedule.php?dateRange=July%2015-21");
 
-        mRecyclerView = (RecyclerView) view.findViewById(R.id.frag_schedule_recyclerView);
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        mRecyclerView.setHasFixedSize(true);
+        recyclerView = (RecyclerView) view.findViewById(R.id.frag_schedule_recyclerView);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        recyclerView.setHasFixedSize(true);
 
-        listData = new ArrayList<>();
+        scheduleInfos = new ArrayList<>();
 
 
         fetchMyShifts();
@@ -66,7 +63,7 @@ public class Schedule extends Fragment {
         progressDialog.setMessage("loading data");
 
         progressDialog.show();
-        StringRequest sr = new StringRequest(Request.Method.GET, sb.toString(), new Response.Listener<String>() {
+        StringRequest sr = new StringRequest(Request.Method.GET, stringBuilder.toString(), new Response.Listener<String>() {
 
             @Override
             public void onResponse(String response) {
@@ -83,12 +80,12 @@ public class Schedule extends Fragment {
                             JSONObject infoObj = jsonArray.getJSONObject(i);
                             ScheduleInfo info = new ScheduleInfo(infoObj.getString("Date"), infoObj.getString("Day"),
                                     infoObj.getString("ShiftTime"), infoObj.getString("EmployeeDesignation"), infoObj.getString("EmplpyeeThumb"));
-                            listData.add(info);
+                            scheduleInfos.add(info);
                         }
 
-                        ScheduleAdapter adapter = new ScheduleAdapter(listData, getContext());
-                        mRecyclerView.setAdapter(adapter);
-                        mRecyclerView.setItemAnimator(new DefaultItemAnimator());
+                        ScheduleAdapter adapter = new ScheduleAdapter(scheduleInfos, getContext());
+                        recyclerView.setAdapter(adapter);
+                        recyclerView.setItemAnimator(new DefaultItemAnimator());
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();

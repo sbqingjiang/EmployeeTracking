@@ -51,14 +51,6 @@
 
         </LinearLayout>
 
-
-        <!--TextView
-        android:id="@+id/textView2"
-        android:textSize="24sp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Phone" /-->
-
     </LinearLayout>
 
 
@@ -87,28 +79,7 @@
             android:textColor="@android:color/black"
             android:textStyle="bold" />
 
-        <!--TextView
-            android:id="@+id/textView1"
-            android:textSize="24sp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Name" /-->
     </LinearLayout>
-
-    <!--TextView
-        android:id="@+id/Name"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textStyle="bold"
-        android:layout_margin="5dp"
-        android:text="TextView"
-        android:textAlignment="center"
-        android:textColor="@android:color/black"
-        android:textSize="18sp" />
-
-    <View style="@style/Divider"
-        android:layout_gravity="center"
-        android:layout_width="200dp"/-->
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -135,34 +106,11 @@
             android:textColor="@android:color/black"
             android:textStyle="bold" />
 
-        <!--TextView
-        android:id="@+id/textView3"
-        android:textSize="24sp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Email" /-->
-
     </LinearLayout>
 
 
-    <!--TextView
-        android:id="@+id/Email"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textStyle="bold"
-        android:layout_margin="5dp"
-        android:text="TextView"
-        android:textAlignment="center"
-        android:textColor="@android:color/black"
-        android:textSize="18sp"
-        />
-
-    <View style="@style/Divider"
-        android:layout_gravity="center"
-        android:layout_width="200dp"/-->
-
     <info.hoang8f.widget.FButton
-        android:id="@+id/profile_log_out"
+        android:id="@+id/save_profile"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="end"

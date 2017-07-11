@@ -18,31 +18,31 @@ import com.tracking.employeetracking.R;
  */
 
 public class MyShiftsFragmentHost extends Fragment {
-    private FragmentTabHost mTabhost;
+    private FragmentTabHost fragmentTabHost;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         //View view = inflater.inflate(R.layout.frag_host_myshifts, container, false);
 
-        mTabhost = new FragmentTabHost(getContext());
-        mTabhost.setup(getActivity(), getChildFragmentManager(), R.layout.frag_host_myshifts);
-        mTabhost.addTab(mTabhost.newTabSpec("myshifts").setIndicator("My Shifts"), MyShifts.class, null);
-        mTabhost.addTab(mTabhost.newTabSpec("schedule").setIndicator("Schedule"), Schedule.class, null);
-        mTabhost.addTab(mTabhost.newTabSpec("openshifts").setIndicator("Open Shifts"), OpenShifts.class, null);
+        fragmentTabHost = new FragmentTabHost(getContext());
+        fragmentTabHost.setup(getActivity(), getChildFragmentManager(), R.layout.frag_host_myshifts);
+        fragmentTabHost.addTab(fragmentTabHost.newTabSpec("myshifts").setIndicator("My Shifts"), MyShifts.class, null);
+        fragmentTabHost.addTab(fragmentTabHost.newTabSpec("schedule").setIndicator("Schedule"), Schedule.class, null);
+        fragmentTabHost.addTab(fragmentTabHost.newTabSpec("openshifts").setIndicator("Open Shifts"), OpenShifts.class, null);
 
-        for (int i = 0; i < mTabhost.getTabWidget().getChildCount(); i++) {
-            TextView tv = (TextView) mTabhost.getTabWidget().getChildAt(i).findViewById(android.R.id.title);
+        for (int i = 0; i < fragmentTabHost.getTabWidget().getChildCount(); i++) {
+            TextView tv = (TextView) fragmentTabHost.getTabWidget().getChildAt(i).findViewById(android.R.id.title);
             tv.setTextColor(Color.parseColor("#000000"));
         }
 
         //return view;
-        return mTabhost;
+        return fragmentTabHost;
     }
 
 
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        mTabhost = null;
+        fragmentTabHost = null;
     }
 }

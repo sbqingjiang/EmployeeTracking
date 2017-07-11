@@ -19,19 +19,19 @@ import java.util.ArrayList;
 
 public class MyShiftsAdapter extends RecyclerView.Adapter<MyShiftsAdapter.ViewHolder> {
 
-    ArrayList<MyShiftsInfo> mList;
-    private Context mContext;
+    ArrayList<MyShiftsInfo> myShiftsInfos;
+    private Context context;
     //Controller cc;
-    SharedPreferences sp;
+    SharedPreferences sharedPreferences;
 
     public MyShiftsAdapter(ArrayList<MyShiftsInfo> list, Context context) {
-        this.mList = list;
-        this.mContext = context;
+        this.myShiftsInfos = list;
+        this.context = context;
     }
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(mContext).inflate(R.layout.item_myshifts, parent, false);
+        View view = LayoutInflater.from(context).inflate(R.layout.item_myshifts, parent, false);
 
 
         return new ViewHolder(view);
@@ -41,28 +41,28 @@ public class MyShiftsAdapter extends RecyclerView.Adapter<MyShiftsAdapter.ViewHo
     public void onBindViewHolder(MyShiftsAdapter.ViewHolder holder, int position) {
 
         //cc = (Controller) mContext.getApplicationContext();
-        sp = mContext.getSharedPreferences("mSharedPref", Context.MODE_PRIVATE);
-        final MyShiftsInfo mInfo = mList.get(position);
-        holder.myshifts_date.setText(mInfo.getDate());
-        holder.myshifts_time.setText(mInfo.getStartTime() + " - " + mInfo.getEndTime());
-        holder.myshifts_location.setText(sp.getString("UserName", "") + " at " + mInfo.getLocation());  // or cc
+        sharedPreferences = context.getSharedPreferences("mSharedPref", Context.MODE_PRIVATE);
+        final MyShiftsInfo mInfo = myShiftsInfos.get(position);
+        holder.myshiftsDate.setText(mInfo.getDate());
+        holder.myshiftsTime.setText(mInfo.getStartTime() + " - " + mInfo.getEndTime());
+        holder.myshiftsLocation.setText(sharedPreferences.getString("UserName", "") + " at " + mInfo.getLocation());  // or cc
     }
 
     @Override
     public int getItemCount() {
-        return mList.size();
+        return myShiftsInfos.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        private TextView myshifts_date, myshifts_time, myshifts_location;
+        private TextView myshiftsDate, myshiftsTime, myshiftsLocation;
         //private ImageView avatar;
 
         public ViewHolder(View itemView) {
             super(itemView);
 
-            myshifts_date = (TextView) itemView.findViewById(R.id.myshifts_date);
-            myshifts_time = (TextView) itemView.findViewById(R.id.myshifts_time);
-            myshifts_location = (TextView) itemView.findViewById(R.id.myshifts_location);
+            myshiftsDate = (TextView) itemView.findViewById(R.id.myshifts_date);
+            myshiftsTime = (TextView) itemView.findViewById(R.id.myshifts_time);
+            myshiftsLocation = (TextView) itemView.findViewById(R.id.myshifts_location);
             //avatar = (ImageView) itemView.findViewById(R.id.avatar);
 
         }
