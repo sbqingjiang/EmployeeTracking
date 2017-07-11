@@ -32,4 +32,9 @@ public class LoginPage extends FragmentActivity {
 
     }
 
+    public boolean tteesstt(int i) {
+        if (i == 1) return true;
+        return false;
+    }
+
 }
